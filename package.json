@@ -5,7 +5,7 @@
   "type": "module",
   "config": {
     "dist": "dist",
-    "domain": "chrono-svelte-template"
+    "domain": "figma-thumbnail-generator"
   },
   "scripts": {
     "dev": "vite",
