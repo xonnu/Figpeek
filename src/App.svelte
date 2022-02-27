@@ -52,7 +52,7 @@
 </div>
 
 <!-- navigation bar -->
-<nav class="hidden lg:block w-full h-[80px] bg-white backdrop-filter backdrop-blur-lg bg-opacity-70 px-4 fixed top-0 left-0 z-40">
+<nav class="hidden lg:flex w-full h-[80px] bg-white backdrop-filter backdrop-blur-lg bg-opacity-70 px-4 fixed top-0 left-0 z-40">
   <div class="flex items-center justify-between container mx-auto w-full h-full transition-all">
     <img src={logo} class="" alt="Figpeek logo">
 
@@ -72,11 +72,11 @@
 
 {#if is_editing}
   <div transition:slide class="p-4 py-7 hidden lg:flex flex-col px-4 bg-secondary w-full h-auto"  id="edit">
-    <div class="container mx-auto">
+    <div class="container mx-auto xl:px-24">
       <h2 class="py-2 text-primary font-bold text-2xl">Customize Thumbnail</h2>
     </div>
 
-    <div class="container mx-auto grid grid-cols-3">
+    <div class="container mx-auto grid grid-cols-3 xl:px-24">
       <!-- col 1 -->
       <div class="py-5 flex flex-col gap-5">
         <div class="flex flex-col gap-2">
@@ -118,7 +118,7 @@
 
       <div class="py-5 flex flex-col gap-5 w-full h-auto">
         <h2 class=" text-primary font-bold text-2xl">Welcome to Figpeek! 🎉</h2>
-        <p class="text-sm text-primary/80 font-medium">Organize your Figma projects by using Figpeek thumbnail generator. it's FREE!</p>
+        <p class="text-sm text-primary/80 font-medium">Organize your <a href="http://figma.com" target="_blank" rel="noopener noreferrer">Figma</a> projects and GitHub Repositories by using Figpeek thumbnail generator. it's FREE!</p>
         <img src="assets/examples.png" class="w-full h-auto" alt="">
       </div>
     </div>
@@ -135,24 +135,29 @@
   </div>
 </div>
 
+<!-- about -->
+<div class="container mx-auto bg-white w-full h-auto py-20 flex items-center justify-center flex-col rounded-2xl">
+  <img src={logo} class="mb-7 w-[200px] h-auto" alt="Figpeek logo">
+  <p class="text-primary/60 text-xl tracking-wide max-w-[900px] block text-center leading-[35px]">Figpeek is a Figma and GitHub thumbnail generator. With Figpeek you can create and experiment your thumbnail with ease, save it, then use it in your projects.</p>
+  <p class="text-xs text-primary/50 mt-1">Sorry, this generator is not available on mobile screens. 😟</p>
+</div>
+
 <!-- usage -->
 <div id="usage">
 
 </div>
 
 <!-- footer -->
-<footer class="flex items-center justify-between container mx-auto px-4 py-5">
-  <div class="h-auto">
-    <form action="https://www.paypal.com/donate" method="post" target="_top" class="flex items-center">
-      <input type="hidden" name="business" value="4U9NYK8C7JGGG" />
-      <input type="hidden" name="no_recurring" value="0" />
-      <input type="hidden" name="currency_code" value="PHP" />
-      <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
-      <img alt="" src="https://www.paypal.com/en_PH/i/scr/pixel.gif" width="1" height="1" />
-    </form>
-  </div>
+<footer class="flex items-center justify-center container mx-auto px-4 py-5 pb-10">
 
-  <p class="text-sm">Created by <b class="text-primary"><a href="https://heychrono.me" target="_blank" rel="noopenner noreferrer">Justin Pascual</a></b>. Licensed under the MIT License.</p>
+  <div class="flex flex-col gap-2 w-full items-center justify-center">
+    <p class="text-sm text-primary/60 font-medium">Created by <b class="text-primary"><a href="https://heychrono.me" target="_blank" rel="noopenner noreferrer">Justin Pascual 🧪</a></b> Licensed under the MIT License.</p>
+    <p class="text-xs text-primary/50">Hey there, did you like it? follow me for more design stuffs</p>
+    <div class="flex flex-row gap-3 items-center">
+      <a href="https://twitter.com/heeeychrono" target="_blank" rel="noopener noreferrer"><img src="assets/icons/icons8-twitter-24.png" class="w-6 h-6 transition opacity-40 hover:opacity-100" alt="Twitter logo icon"></a>
+      <a href="https://github.com/heychrono" target="_blank" rel="noopener noreferrer"><img src="assets/icons/icons8-github-24.png" class="w-6 h-6 transition opacity-40 hover:opacity-100" alt="GitHub logo icon"></a>
+    </div>
+  </div>
 </footer>
 
 <style>
