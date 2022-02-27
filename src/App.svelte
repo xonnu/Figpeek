@@ -17,7 +17,7 @@
 
   let is_editing = false;
 
-  let emoji_icon = '⚡';
+  let emoji_icon = '🍃';
   let title = 'Figma Thumbnail Generator'
   let description = 'Welcome to Figma Thumbnail Generator.'
   let color = '#1B4332'
@@ -61,14 +61,14 @@
     me 🙈</p>
 </div>
 
-<nav class="hidden lg:block w-full h-[80px] bg-white px-4 fixed top-0 left-0 z-40">
+<nav class="hidden lg:block w-full h-[80px] bg-white backdrop-filter backdrop-blur-lg bg-opacity-70 px-4 fixed top-0 left-0 z-40">
   <div class="flex items-center justify-end container mx-auto bg-white w-full h-full">
     <img src={logo} class="mr-auto" alt="Figpeek logo">
 
     <div class="flex flex-row gap-4">
       <button class="button text-primary bg-secondary button-secondary" on:click={()=> {
         is_editing = !is_editing
-        }}>Edit</button>
+        }}>{ !is_editing ? 'Edit ' : 'Close'}</button>
       <a id="save" href="#a" class="bg-primary text-secondary button button-primary" on:click={capture}>Save Image</a>
     </div>
   </div>
@@ -131,7 +131,7 @@
   <div id="capture" class="rounded-xl overflow-hidden px-[100px] flex flex-col gap-4 items-start justify-center container mx-auto w-full max-w-[1240px] h-[640px] transform text-white" style:background-color={color}>
     <span class="text-7xl block text-left w-[700px] ml-[80px] mb-4" on:change={capture}>{emoji_icon}</span>
     <h2 class="wrap block font-bold text-7xl whitespace-normal text-left ml-24 w-[700px] leading-[90px]" on:change={capture} style:color={text_color}> {title || 'Figma Thumbnail Generator'}</h2>
-    <p class="wrap block text-4xl whitespace-normal w-full text-left ml-24 mb-20 leading-[60px]" style:color={text_color}>{description || 'Welcome to Figma Thumbnail Generator'}</p>
+    <p class="wrap block text-4xl whitespace-normal w-full text-left ml-24 mb-20 leading-[60px] mt-5" style:color={text_color}>{description || 'Welcome to Figma Thumbnail Generator'}</p>
   </div>
 </div>
 
