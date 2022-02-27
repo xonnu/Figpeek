@@ -14,6 +14,7 @@
   let description = 'Welcome to Figma Thumbnail Generator.'
   let color = '#1B4332'
   let text_color = '#ffffff'
+  let disable_save = false;
 
   function toggleEmoji() {
     const picker = new EmojiButton({
@@ -37,6 +38,13 @@
       let image = canvas.toDataURL('image/png').replace('image/png', 'image/octet-stream')
 
       const download_button = document.querySelector('#save');
+      download_button.classList.add('pointer-events-none')
+
+      setTimeout(() => {
+        download_button.classList.remove('pointer-events-none')
+      }, 500);
+
+      console.log(disable_save)
       download_button.setAttribute('href', image)
       download_button.setAttribute('download', `${title.split(" ").join("-")}.png`)
     });
@@ -63,7 +71,7 @@
         is_editing = !is_editing;
         if(is_editing) animateScroll.scrollTo({element: '#edit', duration: 1000})
         }}>{ !is_editing ? 'Edit ' : 'Close'}</button>
-      <a id="save" href="#a" class="bg-primary text-white button button-primary" on:click={capture}>Save Image</a>
+      <a id="save" href="#download-thumbnail" class="bg-primary text-white button button-primary" on:mouseenter={capture} on:click={capture}>Save Image</a>
     </div>
   </div>
 </nav>
@@ -131,19 +139,19 @@
   <div id="capture" class="rounded-xl overflow-hidden px-[100px] flex flex-col gap-4 items-start justify-center container mx-auto w-full max-w-[1240px] h-[640px] transform text-white drop-shadow-md" style:background-color={color}>
     <span class="text-7xl block text-left w-[700px] ml-[80px] mb-4" on:change={capture}>{emoji_icon}</span>
     <h2 class="wrap block font-bold text-7xl whitespace-normal text-left ml-24 w-[700px] leading-[90px]" on:change={capture} style:color={text_color}> {title || 'Figma Thumbnail Generator'}</h2>
-    <p class="wrap block text-4xl whitespace-normal text-left ml-24 mb-20 leading-[60px] w-[800px] mt-5" style:color={text_color}>{description || 'Welcome to Figma Thumbnail Generator'}</p>
+    <p class="wrap block text-4xl whitespace-normal text-left ml-24 mb-20 leading-[60px] w-[800px] mt-5" on:change={capture} style:color={text_color}>{description || 'Welcome to Figma Thumbnail Generator'}</p>
   </div>
 </div>
 
 <!-- about -->
-<div class="container mx-auto bg-white w-full h-auto py-20 flex items-center justify-center flex-col rounded-2xl">
+<div id="usage"class="container mx-auto bg-white w-full h-auto py-20 flex items-center justify-center flex-col rounded-2xl">
   <img src={logo} class="mb-7 w-[200px] h-auto" alt="Figpeek logo">
   <p class="text-primary/60 text-xl tracking-wide max-w-[900px] block text-center leading-[35px]">Figpeek is a Figma and GitHub thumbnail generator. With Figpeek you can create and experiment your thumbnail with ease, save it, then use it in your projects.</p>
   <p class="text-xs text-primary/50 mt-1">Sorry, this generator is not available on mobile screens. 😟</p>
 </div>
 
 <!-- usage -->
-<div id="usage">
+<div>
 
 </div>
 
