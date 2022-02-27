@@ -1,33 +1,21 @@
 <script>
   import html2canvas from 'html2canvas';
-  import {
-    EmojiButton
-  } from '@joeattardi/emoji-button';
-
-  import {
-    fly,
-    slide
-  } from 'svelte/transition'
-
-  import {
-    tick
-  } from "svelte";
-
+  import {EmojiButton} from '@joeattardi/emoji-button';
+  import {slide} from 'svelte/transition'
+  import {tick} from "svelte";
   import logo from './assets/logo.svg'
 
   let is_editing = false;
 
+  // default values
   let emoji_icon = '🍃';
   let title = 'Figma Thumbnail Generator'
   let description = 'Welcome to Figma Thumbnail Generator.'
   let color = '#1B4332'
   let text_color = '#ffffff'
 
-  const picker = new EmojiButton();
-
-
   function toggleEmoji() {
-
+    const picker = new EmojiButton();
     picker.on('emoji', selection => {
       emoji_icon = selection.emoji;
     });
@@ -54,31 +42,33 @@
   capture()
 </script>
 
-<div
-  class="p-10 fixed top-0 right-0 flex flex-col items-center justify-center lg:hidden bg-primary w-full h-screen z-50">
+<!-- disabled mobile view -->
+<div class="p-10 fixed top-0 right-0 flex flex-col items-center justify-center lg:hidden bg-primary w-full h-screen z-50">
   <h2 class="font-bold text-2xl text-secondary">Oops, this website is not available in mobile view.</h2>
   <p class="mt-4 text-sm text-secondary/80">Well, if you want to enable it in mobile, check out my repository and help
     me 🙈</p>
 </div>
 
+<!-- navigation bar -->
 <nav class="hidden lg:block w-full h-[80px] bg-white backdrop-filter backdrop-blur-lg bg-opacity-70 px-4 fixed top-0 left-0 z-40">
-  <div class="flex items-center justify-end container mx-auto  w-full h-full">
-    <img src={logo} class="mr-auto" alt="Figpeek logo">
+  <div class="flex items-center justify-between container mx-auto w-full h-full transition-all">
+    <img src={logo} class="" alt="Figpeek logo">
 
-    <div class="flex flex-row gap-4">
+    <div class="flex flex-row gap-4 items-center">
       <button class="button text-primary bg-secondary button-secondary" on:click={()=> {
         is_editing = !is_editing
         }}>{ !is_editing ? 'Edit ' : 'Close'}</button>
-      <a id="save" href="#a" class="bg-primary text-secondary button button-primary" on:click={capture}>Save Image</a>
+      <a id="save" href="#a" class="bg-primary text-white button button-primary" on:click={capture}>Save Image</a>
     </div>
   </div>
 </nav>
 
 <div class="mt-[80px]"></div>
+
 {#if is_editing}
   <div transition:slide class="p-4 py-7 hidden lg:flex flex-col px-4 bg-secondary w-full h-auto">
     <div class="container mx-auto">
-      <h2 class="py-2 text-primary font-bold text-2xl">Options</h2>
+      <h2 class="py-2 text-primary font-bold text-2xl">Customize Thumbnail</h2>
     </div>
 
     <div class="container mx-auto grid grid-cols-3">
@@ -114,7 +104,7 @@
           <span class="text-xs text-primary/80">Try to use emoji for more fanciness</span>
           <div class="flex flex-row items-center">
             <input id="emoji_icon" maxlength="1" class="bg-transparent outline-none pointer-events-none w-[50px] border rounded-md text-2xl" type="text" on:change={capture} bind:value={emoji_icon}>
-            <button id="emoji-button" class="button bg-primary text-secondary button-primary" on:click={toggleEmoji}>Choose emoji</button>
+            <button id="emoji-button" class="button bg-primary text-white button-primary" on:click={toggleEmoji}>Pick an Emoji</button>
           </div>
         </div>
       </div>
@@ -135,8 +125,8 @@
   </div>
 </div>
 
-<footer class="flex items-center justify-end container mx-auto px-4 py-5">
-  <div class="mr-auto h-auto">
+<footer class="flex items-center justify-between container mx-auto px-4 py-5">
+  <div class="h-auto">
     <form action="https://www.paypal.com/donate" method="post" target="_top" class="flex items-center">
       <input type="hidden" name="business" value="4U9NYK8C7JGGG" />
       <input type="hidden" name="no_recurring" value="0" />
@@ -145,6 +135,8 @@
       <img alt="" src="https://www.paypal.com/en_PH/i/scr/pixel.gif" width="1" height="1" />
     </form>
   </div>
+
+  
 
   <p class="text-sm">Created by <b class="text-primary"><a href="https://heychrono.me" target="_blank" rel="noopenner noreferrer">Justin Pascual</a></b>. Licensed under the MIT License.</p>
 </footer>
