@@ -45,8 +45,7 @@
 <!-- disabled mobile view -->
 <div class="p-10 fixed top-0 right-0 flex flex-col items-center justify-center lg:hidden bg-primary w-full h-screen z-50">
   <h2 class="font-bold text-2xl text-secondary">Oops, this website is not available in mobile view.</h2>
-  <p class="mt-4 text-sm text-secondary/80">Well, if you want to enable it in mobile, check out my repository and help
-    me 🙈</p>
+  <p class="mt-4 text-sm text-secondary/80">Sorry to say that this generator is not available in mobile at the moment. 😟</p>
 </div>
 
 <!-- navigation bar -->
@@ -55,6 +54,8 @@
     <img src={logo} class="" alt="Figpeek logo">
 
     <div class="flex flex-row gap-4 items-center">
+      <a href="#how" class="text-primary font-medium">How to use Figpeek?</a>
+
       <button class="button text-primary bg-secondary button-secondary" on:click={()=> {
         is_editing = !is_editing
         }}>{ !is_editing ? 'Edit ' : 'Close'}</button>
@@ -117,6 +118,7 @@
   </div>
 {/if}
 
+<!-- thumbnail output -->
 <div class="hidden w-full bg-white lg:flex items-center justify-center pointer-events-none select-none pb-10 pt-10 px-4">
   <div id="capture" class="rounded-xl overflow-hidden px-[100px] flex flex-col gap-4 items-start justify-center container mx-auto w-full max-w-[1240px] h-[640px] transform text-white" style:background-color={color}>
     <span class="text-7xl block text-left w-[700px] ml-[80px] mb-4" on:change={capture}>{emoji_icon}</span>
@@ -125,6 +127,7 @@
   </div>
 </div>
 
+<!-- footer -->
 <footer class="flex items-center justify-between container mx-auto px-4 py-5">
   <div class="h-auto">
     <form action="https://www.paypal.com/donate" method="post" target="_top" class="flex items-center">
@@ -135,8 +138,6 @@
       <img alt="" src="https://www.paypal.com/en_PH/i/scr/pixel.gif" width="1" height="1" />
     </form>
   </div>
-
-  
 
   <p class="text-sm">Created by <b class="text-primary"><a href="https://heychrono.me" target="_blank" rel="noopenner noreferrer">Justin Pascual</a></b>. Licensed under the MIT License.</p>
 </footer>
