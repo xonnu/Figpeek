@@ -13,7 +13,7 @@ module.exports = {
         secondary: '#D8F3DC',
         'primary-hover': '#0f3223',
         'secondary-hover': '#cce1cf',
-      }
+      },
     },
   },
   plugins: [],

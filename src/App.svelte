@@ -1,6 +1,7 @@
 <script>
   import html2canvas from 'html2canvas';
   import {EmojiButton} from '@joeattardi/emoji-button';
+  import * as animateScroll from "svelte-scrollto";
   import {slide} from 'svelte/transition'
   import {tick} from "svelte";
   import logo from './assets/logo.svg'
@@ -54,10 +55,11 @@
     <img src={logo} class="" alt="Figpeek logo">
 
     <div class="flex flex-row gap-4 items-center">
-      <a href="#how" class="text-primary font-medium">How to use Figpeek?</a>
+      <button class="mr-4 text-primary font-medium hover:underline hover:underline-offset-4 hover:decoration-secondary hover:decoration-2" on:click={() => animateScroll.scrollTo({element: '#usage', duration: 1000})}>How to use Figpeek?</button>
 
       <button class="button text-primary bg-secondary button-secondary" on:click={()=> {
-        is_editing = !is_editing
+        is_editing = !is_editing;
+        if(is_editing) animateScroll.scrollTo({element: '#edit', duration: 1000})
         }}>{ !is_editing ? 'Edit ' : 'Close'}</button>
       <a id="save" href="#a" class="bg-primary text-white button button-primary" on:click={capture}>Save Image</a>
     </div>
@@ -67,7 +69,7 @@
 <div class="mt-[80px]"></div>
 
 {#if is_editing}
-  <div transition:slide class="p-4 py-7 hidden lg:flex flex-col px-4 bg-secondary w-full h-auto">
+  <div transition:slide class="p-4 py-7 hidden lg:flex flex-col px-4 bg-secondary w-full h-auto"  id="edit">
     <div class="container mx-auto">
       <h2 class="py-2 text-primary font-bold text-2xl">Customize Thumbnail</h2>
     </div>
@@ -75,46 +77,48 @@
     <div class="container mx-auto grid grid-cols-3">
       <!-- col 1 -->
       <div class="py-5 flex flex-col gap-5">
-          <div class="flex flex-col gap-2">
-          <label class="label" for="color">Background Color</label>
-          <input type="color" id="color" bind:value={color} on:change={capture}>
-        </div>
-        
-        <div class="flex flex-col gap-2">
-          <label class="label" for="title">Project Title</label>
-          <input placeholder="Write your project name here" maxlength="40" class="w-[300px] border rounded-md py-2 px-4 text-sm" type="text" id="title" bind:value={title} on:change={capture}>
-        </div>
-        
-        <div class="flex flex-col gap-2">
-          <label class="label" for="description">Project Description</label>
-          <textarea placeholder="Write your project description here." maxlength="50" class="w-[300px] border rounded-md py-2 px-4 text-sm" id="description" bind:value={(description)} on:change={capture}></textarea>
-          
-        </div>
-      </div>
-      
-      <!-- col 2 -->
-      <div class="py-5 flex flex-col gap-5">
-        
-        <div class="flex flex-col gap-2">
-           <label class="label" for="color">Text Color</label>
-           <input type="color" id="color" bind:value={text_color} on:change={capture}>
-        </div>
-        
         <div class="flex flex-col gap-2">
           <label class="label" for="emoji_icon">Emoji Icon</label>
-          <span class="text-xs text-primary/80">Try to use emoji for more fanciness</span>
+          
           <div class="flex flex-row items-center">
             <input id="emoji_icon" maxlength="1" class="bg-transparent outline-none pointer-events-none w-[50px] border rounded-md text-2xl" type="text" on:change={capture} bind:value={emoji_icon}>
             <button id="emoji-button" class="button bg-primary text-white button-primary" on:click={toggleEmoji}>Pick an Emoji</button>
           </div>
         </div>
+        
+        <div class="flex flex-col gap-2">
+          <label class="label" for="title">Project Title</label>          
+          <input placeholder="Write your project name here" maxlength="40" class="w-[300px] border rounded-md py-2 px-4 text-sm" type="text" id="title" bind:value={title} on:change={capture}>
+          <span class="text-xs text-primary/80">{title.length}/40</span>
+        </div>
+        
+        <div class="flex flex-col gap-2">
+          <label class="label" for="description">Project Description</label>
+          <textarea placeholder="Write your project description here." maxlength="50" class="w-[300px] border rounded-md py-2 px-4 text-sm" id="description" bind:value={(description)} on:change={capture}></textarea>
+          <span class="text-xs text-primary/80">{description.length}/50</span>
+        </div>
+      </div>
+      
+      <!-- col 2 -->
+      <div class="py-5 flex flex-col gap-5">
+        <div class="flex flex-col gap-2">
+          <label class="label" for="color">Background Color</label>
+          <input type="color" id="color" bind:value={color} on:change={capture} class="w-[300px]">
+        </div>
+        
+        <div class="flex flex-col gap-2">
+           <label class="label" for="color">Text Color</label>
+           <input type="color" id="color" bind:value={text_color} on:change={capture} class="w-[300px]">
+        </div>
       </div>
 
-      <div class="flex items-center justify-center w-full h-auto">
-
+      <div class="py-5 flex flex-col gap-5 w-full h-auto">
+        <h2 class=" text-primary font-bold text-2xl">Welcome to Figpeek! 🎉</h2>
+        <p class="text-sm text-primary/80 font-medium">Organize your Figma projects by using Figpeek thumbnail generator. it's FREE!</p>
+        <img src="assets/examples.png" class="w-full h-auto" alt="">
       </div>
     </div>
-    
+
   </div>
 {/if}
 
@@ -125,6 +129,11 @@
     <h2 class="wrap block font-bold text-7xl whitespace-normal text-left ml-24 w-[700px] leading-[90px]" on:change={capture} style:color={text_color}> {title || 'Figma Thumbnail Generator'}</h2>
     <p class="wrap block text-4xl whitespace-normal w-full text-left ml-24 mb-20 leading-[60px] mt-5" style:color={text_color}>{description || 'Welcome to Figma Thumbnail Generator'}</p>
   </div>
+</div>
+
+<!-- usage -->
+<div id="usage">
+
 </div>
 
 <!-- footer -->
