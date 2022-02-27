@@ -1,6 +1,8 @@
 <script>
   import html2canvas from 'html2canvas';
-  import { EmojiButton } from '@joeattardi/emoji-button';
+  import {
+    EmojiButton
+  } from '@joeattardi/emoji-button';
 
   import {
     fly,
@@ -10,7 +12,7 @@
   import {
     tick
   } from "svelte";
-  
+
   import logo from './assets/logo.svg'
 
   let is_editing = false;
@@ -25,11 +27,11 @@
 
 
   function toggleEmoji() {
- 
+
     picker.on('emoji', selection => {
       emoji_icon = selection.emoji;
     });
-    
+
     picker.togglePicker(document.querySelector('#emoji-button'))
   }
 
@@ -59,7 +61,7 @@
     me 🙈</p>
 </div>
 
-<nav class="hidden lg:block w-full h-[80px] bg-white px-4">
+<nav class="hidden lg:block w-full h-[80px] bg-white px-4 fixed top-0 left-0 z-40">
   <div class="flex items-center justify-end container mx-auto bg-white w-full h-full">
     <img src={logo} class="mr-auto" alt="Figpeek logo">
 
@@ -72,6 +74,7 @@
   </div>
 </nav>
 
+<div class="mt-[80px]"></div>
 {#if is_editing}
   <div transition:slide class="p-4 py-7 hidden lg:flex flex-col px-4 bg-secondary w-full h-auto">
     <div class="container mx-auto">
@@ -88,7 +91,6 @@
         
         <div class="flex flex-col gap-2">
           <label class="label" for="title">Project Title</label>
-          <span class="text-xs text-primary/80">Try to use emoji for more fanciness</span>
           <input placeholder="Write your project name here" maxlength="40" class="w-[300px] border rounded-md py-2 px-4 text-sm" type="text" id="title" bind:value={title} on:change={capture}>
         </div>
         
@@ -126,10 +128,10 @@
 {/if}
 
 <div class="hidden w-full bg-white lg:flex items-center justify-center pointer-events-none select-none pb-10 pt-10 px-4">
-  <div id="capture" class="rounded-xl overflow-hidden px-[100px] flex flex-col gap-4 items-start justify-center container mx-auto w-full max-w-[1300px] h-[640px] transform text-white" style:background-color={color}>
+  <div id="capture" class="rounded-xl overflow-hidden px-[100px] flex flex-col gap-4 items-start justify-center container mx-auto w-full max-w-[1240px] h-[640px] transform text-white" style:background-color={color}>
     <span class="text-7xl block text-left w-[700px] ml-[80px] mb-4" on:change={capture}>{emoji_icon}</span>
     <h2 class="wrap block font-bold text-7xl whitespace-normal text-left ml-24 w-[700px] leading-[90px]" on:change={capture} style:color={text_color}> {title || 'Figma Thumbnail Generator'}</h2>
-    <p class="wrap block text-4xl whitespace-normal w-full text-left ml-24 leading-[60px] mb-24" style:color={text_color}>{description || 'Welcome to Figma Thumbnail Generator'}</p>
+    <p class="wrap block text-4xl whitespace-normal w-full text-left ml-24 mb-20 leading-[60px]" style:color={text_color}>{description || 'Welcome to Figma Thumbnail Generator'}</p>
   </div>
 </div>
 
@@ -175,7 +177,9 @@
   input, textarea {
     @apply border-0;
   }
+
   textarea {
     resize: none;
   }
+
 </style>
