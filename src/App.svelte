@@ -16,7 +16,9 @@
   let text_color = '#ffffff'
 
   function toggleEmoji() {
-    const picker = new EmojiButton();
+    const picker = new EmojiButton({
+      position: 'right-end'
+    });
     picker.on('emoji', selection => {
       emoji_icon = selection.emoji;
     });
@@ -103,12 +105,14 @@
       <div class="py-5 flex flex-col gap-5">
         <div class="flex flex-col gap-2">
           <label class="label" for="color">Background Color</label>
-          <input type="color" id="color" bind:value={color} on:change={capture} class="w-[300px]">
+          <label for="color" class="block w-[30px] h-[30px] rounded-full cursor-pointer  shadow-md" style:background-color={color}></label>
+          <input type="color" id="color" bind:value={color} on:change={capture} class="invisible h-0">
         </div>
         
         <div class="flex flex-col gap-2">
-           <label class="label" for="color">Text Color</label>
-           <input type="color" id="color" bind:value={text_color} on:change={capture} class="w-[300px]">
+           <label class="label" for="text-color">Text Color</label>
+           <label for="text-color" class="block w-[30px] h-[30px] rounded-full cursor-pointer outline-2 shadow-md" style:background-color={text_color}></label>
+           <input type="color" id="text-color" bind:value={text_color} on:change={capture} class="invisible h-0">
         </div>
       </div>
 
@@ -124,10 +128,10 @@
 
 <!-- thumbnail output -->
 <div class="hidden w-full bg-white lg:flex items-center justify-center pointer-events-none select-none pb-10 pt-10 px-4">
-  <div id="capture" class="rounded-xl overflow-hidden px-[100px] flex flex-col gap-4 items-start justify-center container mx-auto w-full max-w-[1240px] h-[640px] transform text-white" style:background-color={color}>
+  <div id="capture" class="rounded-xl overflow-hidden px-[100px] flex flex-col gap-4 items-start justify-center container mx-auto w-full max-w-[1240px] h-[640px] transform text-white drop-shadow-md" style:background-color={color}>
     <span class="text-7xl block text-left w-[700px] ml-[80px] mb-4" on:change={capture}>{emoji_icon}</span>
     <h2 class="wrap block font-bold text-7xl whitespace-normal text-left ml-24 w-[700px] leading-[90px]" on:change={capture} style:color={text_color}> {title || 'Figma Thumbnail Generator'}</h2>
-    <p class="wrap block text-4xl whitespace-normal w-full text-left ml-24 mb-20 leading-[60px] mt-5" style:color={text_color}>{description || 'Welcome to Figma Thumbnail Generator'}</p>
+    <p class="wrap block text-4xl whitespace-normal text-left ml-24 mb-20 leading-[60px] w-[800px] mt-5" style:color={text_color}>{description || 'Welcome to Figma Thumbnail Generator'}</p>
   </div>
 </div>
 
