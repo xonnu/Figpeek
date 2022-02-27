@@ -4,9 +4,11 @@
     fly,
     slide
   } from 'svelte/transition'
+
   import {
     tick
   } from "svelte";
+  
   import logo from './assets/logo.svg'
 
   let is_editing = false;
@@ -14,7 +16,8 @@
   let title = 'Figma Thumbnail Generator ✨'
   let description = 'Welcome to Figma Thumbnail Generator.'
   let color = '#1B4332'
-  
+  let text_color = '#ffffff'
+
   async function capture() {
     await tick();
 
@@ -58,8 +61,9 @@
   <div transition:slide class="p-4 py-7 hidden lg:flex flex-col gap-4 px-4 bg-secondary w-full h-auto">
 
     <div class="container mx-auto grid grid-cols-3">
+      <!-- col 1 -->
       <div class="py-5 flex flex-col gap-5">
-          <div class="flex flex-row gap-4 items-center">
+          <div class="flex flex-col gap-2">
           <label class="label" for="color">Background Color</label>
           <input type="color" id="color" bind:value={color} on:change={capture}>
         </div>
@@ -77,16 +81,29 @@
         </div>
       </div>
       
+      <!-- col 2 -->
+      <div class="py-5 flex flex-col gap-5">
+        
+        <div class="flex flex-col gap-2">
+           <label class="label" for="color">Text Color</label>
+          <input type="color" id="color" bind:value={text_color} on:change={capture}>
+        </div>
+        
+        <div class="flex flex-col gap-2">
+          <label class="label" for="description">Project Description</label>
+          <textarea placeholder="Write your project description here." maxlength="50" class="w-[300px] border rounded-md py-2 px-4 text-sm" id="description" bind:value={(description)} on:change={capture}></textarea>
+          
+        </div>
+      </div>
     </div>
     
   </div>
 {/if}
 
-
 <div class="hidden w-full bg-white lg:flex items-center justify-center pointer-events-none select-none pb-10 pt-10 px-4">
   <div id="capture" class="rounded-xl overflow-hidden px-[100px] flex flex-col gap-4 items-start justify-center container mx-auto w-full max-w-[1300px] h-[640px] transform text-white" style:background-color={color}>
-    <h2 class="wrap block font-bold text-7xl whitespace-normal text-left ml-24 w-[700px] leading-[90px]" on:change={capture}>{title || 'Figma Thumbnail Generator ✨'}</h2>
-    <p class="wrap block mt-7 text-4xl whitespace-normal w-full text-left ml-24 leading-[60px]">{description || 'Welcome to Figma Thumbnail Generator'}</p>
+    <h2 class="wrap block font-bold text-7xl whitespace-normal text-left ml-24 w-[700px] leading-[90px]" on:change={capture} style:color={text_color}> {title || 'Figma Thumbnail Generator ✨'}</h2>
+    <p class="wrap block mt-7 text-4xl whitespace-normal w-full text-left ml-24 leading-[60px]" style:color={text_color}>{description || 'Welcome to Figma Thumbnail Generator'}</p>
   </div>
 </div>
 
