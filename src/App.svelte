@@ -62,7 +62,7 @@
 </div>
 
 <nav class="hidden lg:block w-full h-[80px] bg-white backdrop-filter backdrop-blur-lg bg-opacity-70 px-4 fixed top-0 left-0 z-40">
-  <div class="flex items-center justify-end container mx-auto bg-white w-full h-full">
+  <div class="flex items-center justify-end container mx-auto  w-full h-full">
     <img src={logo} class="mr-auto" alt="Figpeek logo">
 
     <div class="flex flex-row gap-4">
