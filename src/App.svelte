@@ -51,6 +51,10 @@
   }
 
   capture()
+
+  let is_OS_windows = false;
+  // change color option when not Windows
+  if(navigator.platform.indexOf('Win') != -1) is_OS_windows = true
 </script>
 
 <!-- disabled mobile view -->
@@ -113,14 +117,22 @@
       <div class="py-5 flex flex-col gap-5">
         <div class="flex flex-col gap-2">
           <label class="label" for="color">Background Color</label>
-          <label for="color" class="block w-[30px] h-[30px] rounded-full cursor-pointer  shadow-md transition-colors duration-300" style:background-color={color}></label>
-          <input type="color" id="color" bind:value={color} on:change={capture} class="invisible h-0">
+          {#if is_OS_windows}
+             <label for="color" class="block w-[30px] h-[30px] rounded-full cursor-pointer  shadow-md transition-colors duration-300" style:background-color={color}></label>
+             <input type="color" id="color" bind:value={color} on:change={capture} class="invisible h-0">
+          {:else}
+             <input type="color" id="color" bind:value={color} on:change={capture}>
+          {/if}
         </div>
         
         <div class="flex flex-col gap-2">
            <label class="label" for="text-color">Text Color</label>
-           <label for="text-color" class="block w-[30px] h-[30px] rounded-full cursor-pointer outline-2 shadow-md transition-colors duration-300" style:background-color={text_color}></label>
-           <input type="color" id="text-color" bind:value={text_color} on:change={capture} class="invisible h-0">
+           {#if is_OS_windows}
+              <label for="text-color" class="block w-[30px] h-[30px] rounded-full cursor-pointer outline-2 shadow-md transition-colors duration-300" style:background-color={text_color}></label>
+              <input type="color" id="text-color" bind:value={text_color} on:change={capture} class="invisible h-0">
+           {:else}
+               <input type="color" id="text-color" bind:value={text_color} on:change={capture}>
+           {/if}
         </div>
       </div>
 
