@@ -1,11 +1,13 @@
 <script>
   import html2canvas from 'html2canvas';
   import {EmojiButton} from '@joeattardi/emoji-button';
+  
   import * as animateScroll from "svelte-scrollto";
   import {slide} from 'svelte/transition'
   import {tick} from "svelte";
+  
   import logo from './assets/logo.svg'
-
+  
   let is_editing = false;
 
   // default values
@@ -14,7 +16,6 @@
   let description = 'Welcome to Figma Thumbnail Generator.'
   let color = '#1B4332'
   let text_color = '#ffffff'
-  let disable_save = false;
 
   function toggleEmoji() {
     const picker = new EmojiButton({
@@ -38,13 +39,12 @@
       let image = canvas.toDataURL('image/png').replace('image/png', 'image/octet-stream')
 
       const download_button = document.querySelector('#save');
-      download_button.classList.add('pointer-events-none')
+      // download_button.classList.add('pointer-events-none')
 
-      setTimeout(() => {
-        download_button.classList.remove('pointer-events-none')
-      }, 500);
+      // setTimeout(() => {
+      //   download_button.classList.remove('pointer-events-none')
+      // }, 500);
 
-      console.log(disable_save)
       download_button.setAttribute('href', image)
       download_button.setAttribute('download', `${title.split(" ").join("-")}.png`)
     });
@@ -88,7 +88,7 @@
       <!-- col 1 -->
       <div class="py-5 flex flex-col gap-5">
         <div class="flex flex-col gap-2">
-          <label class="label" for="emoji_icon">Emoji Icon</label>
+          <label class="label" for="emoji_icon" >Emoji Icon</label>
           
           <div class="flex flex-row items-center">
             <input id="emoji_icon" maxlength="1" class="bg-transparent outline-none pointer-events-none w-[50px] border rounded-md text-2xl" type="text" on:change={capture} bind:value={emoji_icon}>
@@ -113,13 +113,13 @@
       <div class="py-5 flex flex-col gap-5">
         <div class="flex flex-col gap-2">
           <label class="label" for="color">Background Color</label>
-          <label for="color" class="block w-[30px] h-[30px] rounded-full cursor-pointer  shadow-md" style:background-color={color}></label>
+          <label for="color" class="block w-[30px] h-[30px] rounded-full cursor-pointer  shadow-md transition-colors duration-300" style:background-color={color}></label>
           <input type="color" id="color" bind:value={color} on:change={capture} class="invisible h-0">
         </div>
         
         <div class="flex flex-col gap-2">
            <label class="label" for="text-color">Text Color</label>
-           <label for="text-color" class="block w-[30px] h-[30px] rounded-full cursor-pointer outline-2 shadow-md" style:background-color={text_color}></label>
+           <label for="text-color" class="block w-[30px] h-[30px] rounded-full cursor-pointer outline-2 shadow-md transition-colors duration-300" style:background-color={text_color}></label>
            <input type="color" id="text-color" bind:value={text_color} on:change={capture} class="invisible h-0">
         </div>
       </div>
@@ -147,7 +147,6 @@
 <div id="usage"class="container mx-auto bg-white w-full h-auto py-20 flex items-center justify-center flex-col rounded-2xl">
   <img src={logo} class="mb-7 w-[200px] h-auto" alt="Figpeek logo">
   <p class="text-primary/60 text-xl tracking-wide max-w-[900px] block text-center leading-[35px]">Figpeek is a Figma and GitHub thumbnail generator. With Figpeek you can create and experiment your thumbnail with ease, save it, then use it in your projects.</p>
-  <p class="text-xs text-primary/50 mt-1">Sorry, this generator is not available on mobile screens. 😟</p>
 </div>
 
 <!-- usage -->

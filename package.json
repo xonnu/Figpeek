@@ -5,7 +5,7 @@
   "type": "module",
   "config": {
     "dist": "dist",
-    "domain": "figma-thumbnail-generator"
+    "domain": "figpeek"
   },
   "scripts": {
     "dev": "vite",
