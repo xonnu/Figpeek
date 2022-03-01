@@ -17,40 +17,33 @@
   let color = '#1B4332'
   let text_color = '#ffffff'
 
+  let href_image = null;
+  let download_filename = null
   function toggleEmoji() {
     const picker = new EmojiButton({
       position: 'right-end'
-    });
+    }); 
+
     picker.on('emoji', selection => {
       emoji_icon = selection.emoji;
+      liveCapture()
     });
 
     picker.togglePicker(document.querySelector('#emoji-button'))
   }
 
-  async function capture() {
-    await tick();
+  function liveCapture() {
 
     html2canvas(document.querySelector('#capture'), {
       width: 1240,
       height: 640,
       backgroundColor: color
     }).then(function (canvas) {
-      let image = canvas.toDataURL('image/png').replace('image/png', 'image/octet-stream')
-
-      const download_button = document.querySelector('#save');
-      // download_button.classList.add('pointer-events-none')
-
-      // setTimeout(() => {
-      //   download_button.classList.remove('pointer-events-none')
-      // }, 500);
-
-      download_button.setAttribute('href', image)
-      download_button.setAttribute('download', `${title.split(" ").join("-")}.png`)
+      let image = canvas.toDataURL('image/png')
+      href_image = image
+      download_filename = `${title.split(" ").join("-")}.png`;
     });
   }
-
-  capture()
 
   let is_OS_windows = false;
   // change color option when not Windows
@@ -75,7 +68,7 @@
         is_editing = !is_editing;
         if(is_editing) animateScroll.scrollTo({element: '#edit', duration: 1000})
         }}>{ !is_editing ? 'Edit ' : 'Close'}</button>
-      <a id="save" href="#download-thumbnail" class="bg-primary text-white button button-primary" on:mouseenter={capture} on:click={capture}>Save Image</a>
+      <a id="save" href={href_image} download={download_filename} class="bg-primary text-white button button-primary" on:mouseenter={liveCapture} on:click={liveCapture}>Save Image</a>
     </div>
   </div>
 </nav>
@@ -95,20 +88,20 @@
           <label class="label" for="emoji_icon" >Emoji Icon</label>
           
           <div class="flex flex-row items-center">
-            <input id="emoji_icon" maxlength="1" class="bg-transparent outline-none pointer-events-none w-[50px] border rounded-md text-2xl" type="text" on:change={capture} bind:value={emoji_icon}>
-            <button id="emoji-button" class="button bg-primary text-white button-primary" on:click={toggleEmoji}>Pick an Emoji</button>
+            <input id="emoji_icon" maxlength="1" class="bg-transparent outline-none pointer-events-none w-[50px] border rounded-md text-2xl" type="text" on:change={liveCapture} bind:value={emoji_icon}>
+            <button id="emoji-button" class="button bg-primary text-white button-primary" on:change={liveCapture} on:click={toggleEmoji}>Pick an Emoji</button>
           </div>
         </div>
         
         <div class="flex flex-col gap-2">
           <label class="label" for="title">Project Title</label>          
-          <input placeholder="Write your project name here" maxlength="40" class="w-[300px] border rounded-md py-2 px-4 text-sm" type="text" id="title" bind:value={title} on:change={capture}>
+          <input placeholder="Write your project name here" maxlength="40" class="w-[300px] border rounded-md py-2 px-4 text-sm" type="text" id="title" bind:value={title} on:change={liveCapture}>
           <span class="text-xs text-primary/80">{title.length}/40</span>
         </div>
         
         <div class="flex flex-col gap-2">
           <label class="label" for="description">Project Description</label>
-          <textarea placeholder="Write your project description here." maxlength="50" class="w-[300px] border rounded-md py-2 px-4 text-sm" id="description" bind:value={(description)} on:change={capture}></textarea>
+          <textarea placeholder="Write your project description here." maxlength="50" class="w-[300px] border rounded-md py-2 px-4 text-sm" id="description" bind:value={(description)} on:change={liveCapture}></textarea>
           <span class="text-xs text-primary/80">{description.length}/50</span>
         </div>
       </div>
@@ -119,9 +112,9 @@
           <label class="label" for="color">Background Color</label>
           {#if is_OS_windows}
              <label for="color" class="block w-[30px] h-[30px] rounded-full cursor-pointer  shadow-md transition-colors duration-300" style:background-color={color}></label>
-             <input type="color" id="color" bind:value={color} on:change={capture} class="invisible h-0">
+             <input type="color" id="color" bind:value={color} on:change={liveCapture} class="invisible h-0">
           {:else}
-             <input type="color" id="color" bind:value={color} on:change={capture}>
+             <input type="color" id="color" bind:value={color} on:change={liveCapture}>
           {/if}
         </div>
         
@@ -129,9 +122,9 @@
            <label class="label" for="text-color">Text Color</label>
            {#if is_OS_windows}
               <label for="text-color" class="block w-[30px] h-[30px] rounded-full cursor-pointer outline-2 shadow-md transition-colors duration-300" style:background-color={text_color}></label>
-              <input type="color" id="text-color" bind:value={text_color} on:change={capture} class="invisible h-0">
+              <input type="color" id="text-color" bind:value={text_color} on:change={liveCapture} class="invisible h-0">
            {:else}
-               <input type="color" id="text-color" bind:value={text_color} on:change={capture}>
+               <input type="color" id="text-color" bind:value={text_color} on:change={liveCapture}>
            {/if}
         </div>
       </div>
@@ -149,9 +142,9 @@
 <!-- thumbnail output -->
 <div class="hidden w-full bg-white lg:flex items-center justify-center pointer-events-none select-none pb-10 pt-10 px-4">
   <div id="capture" class="rounded-xl overflow-hidden px-[100px] flex flex-col gap-4 items-start justify-center container mx-auto w-full max-w-[1240px] h-[640px] transform text-white drop-shadow-md" style:background-color={color}>
-    <span class="text-7xl block text-left w-[700px] ml-[80px] mb-4" on:change={capture}>{emoji_icon}</span>
-    <h2 class="wrap block font-bold text-7xl whitespace-normal text-left ml-24 w-[700px] leading-[90px]" on:change={capture} style:color={text_color}> {title || 'Figma Thumbnail Generator'}</h2>
-    <p class="wrap block text-4xl whitespace-normal text-left ml-24 mb-20 leading-[60px] w-[800px] mt-5" on:change={capture} style:color={text_color}>{description || 'Welcome to Figma Thumbnail Generator'}</p>
+    <span class="text-7xl block text-left w-[700px] ml-[80px] mb-4" on:change={liveCapture}>{emoji_icon}</span>
+    <h2 class="wrap block font-bold text-7xl whitespace-normal text-left ml-24 w-[700px] leading-[90px]" on:change={liveCapture} style:color={text_color}> {title || 'Figma Thumbnail Generator'}</h2>
+    <p class="wrap block text-4xl whitespace-normal text-left ml-24 mb-20 leading-[60px] w-[800px] mt-5" on:change={liveCapture} style:color={text_color}>{description || 'Welcome to Figma Thumbnail Generator'}</p>
   </div>
 </div>
 
