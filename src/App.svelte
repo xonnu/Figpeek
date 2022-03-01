@@ -41,7 +41,7 @@
     }).then(function (canvas) {
       let image = canvas.toDataURL('image/png')
       href_image = image
-      download_filename = `${title.split(" ").join("-")}.png`;
+      download_filename = title.length == 0 ? 'Figma Thumbnail Generator' : `${title.split(" ").join("-")}.png`;
     });
   }
 
