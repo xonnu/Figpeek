@@ -131,7 +131,7 @@
       </div>
 
       <div class="py-5 flex flex-col gap-5 w-full h-auto">
-        <h2 class=" text-primary font-bold text-2xl">Welcome to Figpeek! 🎉</h2>
+        <h2 class=" text-primary font-bold text-xl">Welcome to Figpeek! 🎉</h2>
         <p class="text-sm text-primary/80 font-medium">Organize your <a href="http://figma.com" target="_blank" rel="noopener noreferrer">Figma</a> projects and GitHub Repositories by using Figpeek thumbnail generator. it's FREE!</p>
         <img src="assets/examples.png" class="w-full h-auto" alt="">
       </div>
@@ -162,7 +162,6 @@
 
 <!-- footer -->
 <footer class="flex items-center justify-center container mx-auto px-4 py-5 pb-10">
-
   <div class="flex flex-col gap-2 w-full items-center justify-center">
     <p class="text-sm text-primary/60 font-medium">Created by <b class="text-primary"><a href="https://heychrono.me" target="_blank" rel="noopenner noreferrer">Justin Pascual 🧪</a></b> Licensed under the MIT License.</p>
     <p class="text-xs text-primary/50">Hey there, did you like it? follow me for more design stuffs</p>
