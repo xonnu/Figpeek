@@ -4,7 +4,6 @@
   
   import * as animateScroll from "svelte-scrollto";
   import {slide} from 'svelte/transition'
-  import {tick} from "svelte";
   
   import logo from './assets/logo.svg'
   
@@ -19,6 +18,7 @@
 
   let href_image = null;
   let download_filename = null
+
   function toggleEmoji() {
     const picker = new EmojiButton({
       position: 'right-end'
@@ -26,7 +26,6 @@
 
     picker.on('emoji', selection => {
       emoji_icon = selection.emoji;
-      liveCapture()
     });
 
     picker.togglePicker(document.querySelector('#emoji-button'))
@@ -41,7 +40,7 @@
     }).then(function (canvas) {
       let image = canvas.toDataURL('image/png')
       href_image = image
-      download_filename = title.length == 0 ? 'Figma Thumbnail Generator' : `${title.split(" ").join("-")}.png`;
+      download_filename = title.length == 0 ? `${"Figma Thumbnail Generator".split(" ").join("-")}.png` : `${title.split(" ").join("-")}.png`;
     });
   }
 
