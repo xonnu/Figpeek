@@ -30,17 +30,20 @@
 
     picker.togglePicker(document.querySelector('#emoji-button'))
   }
-
+ 
   function liveCapture() {
-
+    // removing rounded when saving the thumbnail image.
+    const capture = document.querySelector('#capture');
+    capture.classList.remove('rounded-xl')
+    
     html2canvas(document.querySelector('#capture'), {
       width: 1240,
-      height: 640,
-      backgroundColor: color
+      height: 640
     }).then(function (canvas) {
-      let image = canvas.toDataURL('image/png')
+      const image = canvas.toDataURL('image/png')
       href_image = image
-      download_filename = title.length == 0 ? `${"Figma Thumbnail Generator".split(" ").join("-")}.png` : `${title.split(" ").join("-")}.png`;
+      download_filename = `${(title.length == 0 ? "Figma Thumbnail Generator" : title).split(" ").join("-")}.png`;
+      capture.classList.add('rounded-xl')
     });
   }
 
