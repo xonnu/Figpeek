@@ -47,9 +47,8 @@
     });
   }
 
-  let is_OS_windows = false;
   // change color option when not Windows
-  if(navigator.platform.indexOf('Win') != -1) is_OS_windows = true
+  let is_OS_windows = (navigator.platform.indexOf('Win') != -1) ? true : false;
 </script>
 
 <!-- disabled mobile view -->
