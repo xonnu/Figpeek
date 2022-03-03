@@ -1,5 +1,4 @@
 <script>
-  import SvelteSeo from "svelte-seo";
   import html2canvas from 'html2canvas';
   import {EmojiButton} from '@joeattardi/emoji-button';
   
@@ -43,7 +42,7 @@
     }).then(function (canvas) {
       const image = canvas.toDataURL('image/png')
       href_image = image
-      download_filename = `${(title.length == 0 ? "Figma Thumbnail Generator" : title).split(" ").join("-")}.png`;
+      download_filename = `${(title.length == 0 ? "Figma-Thumbnail-Generator" : title).split(" ").join("-")}.png`;
       capture.classList.add('rounded-xl')
     });
   }
@@ -51,36 +50,7 @@
   // change color option when not Windows
   let is_OS_windows = (navigator.platform.indexOf('Win') != -1) ? true : false;
 
-  let SEO_title = "Figpeek | Figma Thumbnail Generator ✨"
-  let SEO_description = "Figpeek is a Figma and GitHub thumbnail generator. With Figpeek you can create and experiment your thumbnail with ease, save it, then use it in your projects."
 </script>
-
-<!-- <SvelteSeo
-  title={SEO_title}
-  description={SEO_description}
-  openGraph={{
-    title: SEO_title,
-    description: SEO_description,
-    url: 'https://figpeek.xyz',
-    type: 'website',
-    images: [
-      {
-        url: 'https://figpeek.xyz/assets/og-image.jpg',
-        width: 1240,
-        height: 640,
-        alt: 'Figpeek OG Image'
-      }
-     ]
-  }}
-  twitter={{
-    site: "@heeeychrono",
-    title: SEO_title,
-    description: SEO_description,
-    image: 'https://figpeek.xyz/assets/og-image.jpg',
-    imageAlt: 'Figpeek OG Image',
-  }}
-/> -->
-
 
 <!-- disabled mobile view -->
 <div class="p-10 fixed top-0 right-0 flex flex-col items-center justify-center lg:hidden bg-primary w-full h-screen z-50">
@@ -117,7 +87,7 @@
       <!-- col 1 -->
       <div class="py-5 flex flex-col gap-5">
         <div class="flex flex-col gap-2">
-          <label class="label" for="emoji_icon" >Emoji Icon</label>
+          <label class="label" for="emoji_icon">Emoji Icon</label>
           
           <div class="flex flex-row items-center">
             <input id="emoji_icon" maxlength="1" class="bg-transparent outline-none pointer-events-none w-[50px] border rounded-md text-2xl" type="text" on:change={liveCapture} bind:value={emoji_icon}>
@@ -136,6 +106,9 @@
           <textarea placeholder="Write your project description here." maxlength="50" class="w-[300px] border rounded-md py-2 px-4 text-sm" id="description" bind:value={(description)} on:change={liveCapture}></textarea>
           <span class="text-xs text-primary/80">{description.length}/50</span>
         </div>
+
+        <button class="bg-primary text-white button button-primary" on:click={liveCapture}>Save Changes</button>
+        <span class="text-xs text-primary/80 mt-[-10px]">When changes is not reflected in small preview click "Save changes" button.</span>
       </div>
       
       <!-- col 2 -->
@@ -159,6 +132,15 @@
                <input type="color" id="text-color" bind:value={text_color} on:change={liveCapture}>
            {/if}
         </div>
+
+        <div class="flex flex-col gap-2">
+          <label class="label" for="preview">Small Preview</label>
+          {#if href_image == null}
+             <div class="bg-primary w-[80%] h-[160px] rounded-md"></div>
+          {:else}
+            <img src={href_image} class="bg-primary w-[80%] h-[160px] rounded-md object-cover" id="preview" alt="thumbnail preview">
+          {/if}
+        </div>
       </div>
 
       <div class="py-5 flex flex-col gap-5 w-full h-auto">
@@ -173,7 +155,7 @@
 
 <!-- thumbnail output -->
 <div class="hidden w-full bg-white lg:flex items-center justify-center pointer-events-none select-none pb-10 pt-10 px-4">
-  <div id="capture" class="rounded-xl overflow-hidden px-[100px] flex flex-col gap-4 items-start justify-center container mx-auto w-full max-w-[1240px] h-[640px] transform text-white drop-shadow-md" style:background-color={color}>
+  <div id="capture" class="rounded-xl overflow-hidden px-[100px] flex flex-col gap-4 items-start justify-center container mx-auto w-full max-w-[1240px] h-[640px] transform text-white drop-shadow-md" on:change={liveCapture} style:background-color={color}>
     <span class="text-7xl block text-left w-[700px] ml-[80px] mb-4" on:change={liveCapture}>{emoji_icon}</span>
     <h2 class="wrap block font-bold text-7xl whitespace-normal text-left ml-24 w-[700px] leading-[90px]" on:change={liveCapture} style:color={text_color}> {title || 'Figma Thumbnail Generator'}</h2>
     <p class="wrap block text-4xl whitespace-normal text-left ml-24 mb-20 leading-[60px] w-[800px] mt-5" on:change={liveCapture} style:color={text_color}>{description || 'Welcome to Figma Thumbnail Generator'}</p>
@@ -234,6 +216,10 @@
 
   textarea {
     resize: none;
+  }
+
+  .disable-button {
+    @apply opacity-50 pointer-events-none;
   }
 
 </style>
