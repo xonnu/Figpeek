@@ -55,7 +55,7 @@
   let SEO_description = "Figpeek is a Figma and GitHub thumbnail generator. With Figpeek you can create and experiment your thumbnail with ease, save it, then use it in your projects."
 </script>
 
-<SvelteSeo
+<!-- <SvelteSeo
   title={SEO_title}
   description={SEO_description}
   openGraph={{
@@ -79,7 +79,7 @@
     image: 'https://figpeek.xyz/assets/og-image.jpg',
     imageAlt: 'Figpeek OG Image',
   }}
-/>
+/> -->
 
 
 <!-- disabled mobile view -->
