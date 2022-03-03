@@ -1,4 +1,5 @@
 <script>
+  import SvelteSeo from "svelte-seo";
   import html2canvas from 'html2canvas';
   import {EmojiButton} from '@joeattardi/emoji-button';
   
@@ -49,7 +50,42 @@
 
   // change color option when not Windows
   let is_OS_windows = (navigator.platform.indexOf('Win') != -1) ? true : false;
+
+  let SEO_title = "Figpeek | Figma Thumbnail Generator ✨"
+  let SEO_description = "Figpeek is a Figma and GitHub thumbnail generator. With Figpeek you can create and experiment your thumbnail with ease, save it, then use it in your projects."
 </script>
+
+<SvelteSeo
+  title={SEO_title}
+  description={SEO_description}
+/>
+
+<SvelteSeo
+  openGraph={{
+    title: SEO_title,
+    description: SEO_description,
+    url: 'https://figpeek.xyz',
+    type: 'website',
+    images: [
+      {
+        url: 'https://figpeek.xyz/assets/og-image.jpg',
+        width: 1240,
+        height: 640,
+        alt: 'Figpeek OG Image'
+      }
+     ]
+  }}
+/>
+
+<SvelteSeo
+  twitter={{
+    site: "@heeeychrono",
+    title: SEO_title,
+    description: SEO_description,
+    image: 'https://figpeek.xyz/assets/og-image.jpg',
+    imageAlt: 'Figpeek OG Image',
+  }}
+/>
 
 <!-- disabled mobile view -->
 <div class="p-10 fixed top-0 right-0 flex flex-col items-center justify-center lg:hidden bg-primary w-full h-screen z-50">
