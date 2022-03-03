@@ -58,9 +58,6 @@
 <SvelteSeo
   title={SEO_title}
   description={SEO_description}
-/>
-
-<SvelteSeo
   openGraph={{
     title: SEO_title,
     description: SEO_description,
@@ -75,9 +72,6 @@
       }
      ]
   }}
-/>
-
-<SvelteSeo
   twitter={{
     site: "@heeeychrono",
     title: SEO_title,
@@ -86,6 +80,7 @@
     imageAlt: 'Figpeek OG Image',
   }}
 />
+
 
 <!-- disabled mobile view -->
 <div class="p-10 fixed top-0 right-0 flex flex-col items-center justify-center lg:hidden bg-primary w-full h-screen z-50">
