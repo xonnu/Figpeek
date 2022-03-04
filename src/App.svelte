@@ -165,19 +165,54 @@
 <!-- about -->
 <div id="usage"class="container mx-auto bg-white w-full h-auto py-20 flex items-center justify-center flex-col rounded-2xl">
   <img src={logo} class="mb-7 w-[200px] h-auto" alt="Figpeek logo">
-  <p class="text-primary/60 text-xl tracking-wide max-w-[900px] block text-center leading-[35px]">Figpeek is a Figma and GitHub thumbnail generator. With Figpeek you can create and experiment your thumbnail with ease, save it, then use it in your projects.</p>
+  <p class="text-primary/60 text-xl tracking-wide max-w-[900px] block text-center leading-[35px]">Figpeek is a new Figma and GitHub thumbnail generator. With Figpeek you can create and experiment your thumbnail with ease. Organize your Figma projects with Figpeek now, it's FREE!</p>
 </div>
 
 <!-- usage -->
-<div>
+<div class="w-full py-5 px-4 bg-secondary rounded-md flex flex-col items-center justify-center">
+    <div class="bg-secondary rounded-md py-10 container mx-auto">
+      <h2 class="py-2 text-primary font-bold text-2xl block w-full text-center">How to use Figpeek?</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-5">
+        <div class="min-h-[150px] w-full h-auto py-5 lg:pl-10">
+          <div class="flex w-full flex-row items-start justify-between gap-4">
+            <span class="mt-3 min-h-[35px] min-w-[35px] bg-primary text-white text-md font-bold flex items-center justify-center rounded-lg">1</span>
+            <div>
+              <h3 class="py-2 text-primary font-bold text-lg block w-full">Create thumbnail with Figpeek</h3>
+              <p class="text-sm text-primary/70 font-medium">Create a thumbnail with Figpeek, then save the image using the <b>Save Image</b> button.</p>
+            </div>
+          </div>
+        </div>
 
+        <div class="min-h-[150px] w-full h-auto py-5 pl-10">
+          <div class="flex w-full flex-row items-start justify-between gap-4">
+            <span class="mt-3 min-h-[35px] min-w-[35px] bg-primary text-white text-md font-bold flex items-center justify-center rounded-lg">2</span>
+            <div>
+              <h3 class="py-2 text-primary font-bold text-lg block w-full">Make it Frame Selection</h3>
+              <p class="text-sm text-primary/70 font-medium">Go to Figma and paste the thumbnail in your Figma project, right click on the thumbnail image and click <b>Frame Selection</b>.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="min-h-[150px] w-full h-auto py-5 pl-10">
+          <div class="flex w-full flex-row items-start justify-between gap-4">
+            <span class="mt-3 min-h-[35px] min-w-[35px] bg-primary text-white text-md font-bold flex items-center justify-center rounded-lg">3</span>
+            <div>
+              <h3 class="py-2 text-primary font-bold text-lg block w-full">Set as thumbnail</h3>
+          <p class="text-sm text-primary/70 font-medium">Right click the Frame and click the <b>Set as thumbnail</b>, and you're done! </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
 </div>
 
 <!-- footer -->
 <footer class="flex items-center justify-center container mx-auto px-4 py-5 pb-10">
   <div class="flex flex-col gap-2 w-full items-center justify-center">
-    <p class="text-sm text-primary/60 font-medium">Created by <b class="text-primary"><a href="https://heychrono.me" target="_blank" rel="noopenner noreferrer">Justin Pascual 🧪</a></b> Licensed under the MIT License.</p>
-    <p class="text-xs text-primary/50">Hey there, did you like it? follow me for more design stuffs</p>
+    <p class="text-sm text-primary/60 font-medium">Created by <b class="text-primary"><a href="https://heychrono.me" target="_blank" rel="noopenner noreferrer">Justin Pascual 🧪</a></b> Licensed under the MIT License. <b class="text-primary"><a href="https://forms.office.com/r/1MZ3ZS9XnE" target="_blank" rel="noopener noreferrer">Send feedback 👋</a></b></p>
+    <p class="text-xs text-primary/50">Hey there, did you like it? follow me for more design stuffs.</p>
     <div class="flex flex-row gap-3 items-center">
       <a href="https://twitter.com/heeeychrono" target="_blank" rel="noopener noreferrer"><img src="assets/icons/icons8-twitter-24.png" class="w-6 h-6 transition opacity-40 hover:opacity-100" alt="Twitter logo icon"></a>
       <a href="https://github.com/heychrono" target="_blank" rel="noopener noreferrer"><img src="assets/icons/icons8-github-24.png" class="w-6 h-6 transition opacity-40 hover:opacity-100" alt="GitHub logo icon"></a>
@@ -202,7 +237,7 @@
     @apply bg-secondary-hover;
   }
 
-   .button:active {
+  .button:active {
     @apply scale-95;
   }
 
