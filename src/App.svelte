@@ -209,7 +209,7 @@
 </div>
 
 <!-- footer -->
-<footer class="flex items-center justify-center container mx-auto px-4 py-5 pb-10">
+<footer class="flex items-center justify-center container mx-auto px-4 py-5 pb-10 pt-14">
   <div class="flex flex-col gap-2 w-full items-center justify-center">
     <p class="text-sm text-primary/60 font-medium">Created by <b class="text-primary"><a href="https://heychrono.me" target="_blank" rel="noopenner noreferrer">Justin Pascual 🧪</a></b> Licensed under the MIT License. <b class="text-primary"><a href="https://forms.office.com/r/1MZ3ZS9XnE" target="_blank" rel="noopener noreferrer">Send feedback 👋</a></b></p>
     <p class="text-xs text-primary/50">Hey there, did you like it? follow me for more design stuffs.</p>
