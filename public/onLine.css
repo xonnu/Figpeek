@@ -1,0 +1,15 @@
+.offline-message {
+  position: fixed;
+  right: 2%;
+  bottom: 2%;
+  background-color: rgb(250, 83, 83);
+  border-radius: 10px;
+  color: white;
+  display: block;
+  font-weight: 500;
+  padding: 16px;
+}
+
+.hide {
+  display: none;
+}

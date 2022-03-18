@@ -49,7 +49,6 @@
 
   // change color option when not Windows
   let is_OS_windows = (navigator.platform.indexOf('Win') != -1) ? true : false;
-
 </script>
 
 <!-- disabled mobile view -->
@@ -252,9 +251,4 @@
   textarea {
     resize: none;
   }
-
-  .disable-button {
-    @apply opacity-50 pointer-events-none;
-  }
-
 </style>

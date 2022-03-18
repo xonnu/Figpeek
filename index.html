@@ -9,6 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title> Figpeek | Figma Thumbnail Generator ✨ </title>
+  <link rel="manifest" href="site.webmanifest">
   <meta name="robots" content="index,follow">
   <meta name="googlebot" content="index,follow">
   <meta name="description"
@@ -29,6 +30,25 @@
     content="Figpeek is a Figma and GitHub thumbnail generator. With Figpeek you can create and experiment your thumbnail with ease, save it, then use it in your projects.">
   <meta name="twitter:image" content="https://figpeek.xyz/assets/og-image.jpg">
   <meta name="twitter:image:alt" content="Figpeek OG Image">
+  <meta name="theme-color" content="#1B4332">
+
+  <style>
+    .offline-message {
+      position: fixed;
+      right: 2%;
+      bottom: 2%;
+      background-color: rgb(250, 83, 83);
+      border-radius: 10px;
+      color: white;
+      display: block;
+      font-weight: 500;
+      padding: 16px;
+    }
+
+    .hide {
+      display: none;
+    }
+  </style>
 </head>
 
 <body>
@@ -38,7 +58,32 @@
   <noscript><img src="https://queue.simpleanalyticscdn.com/noscript.gif" alt=""
       referrerpolicy="no-referrer-when-downgrade" /></noscript>
   <script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
+  <script src="service-worker.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register("service-worker.js").then(registration => {}).catch(error => {
+          console.log(error)
+      })
+  }
+  </script>
+
+  <div id="offline-message" class="offline-message hide">
+    <p>Hey, you are offline now, some errors may occur.</p>
+  </div>
 </body>
+<script>
+
+  const offline_elem = document.querySelector('#offline-message');
+  
+  window.addEventListener('online', () => {
+    if(!offline_elem.classList.contains('hide')) offline_elem.classList.add('hide')
+  })
+  
+  window.addEventListener('offline', () => {
+    if(offline_elem.classList.contains('hide')) offline_elem.classList.remove('hide')
+  })
+
+</script>
 <script>
   kofiWidgetOverlay.draw('heychrono', {
     'type': 'floating-chat',
