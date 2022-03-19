@@ -63,7 +63,7 @@
     <img src={logo} class="" alt="Figpeek logo">
 
     <div class="flex flex-row gap-4 items-center">
-      <!-- <button class="mr-4 text-primary font-medium hover:underline hover:underline-offset-4 hover:decoration-secondary hover:decoration-2" on:click={() => animateScroll.scrollTo({element: '#usage', duration: 1000})}>Releases</button> -->
+      <button class="mr-4 text-primary font-medium hover:underline hover:underline-offset-4 hover:decoration-secondary hover:decoration-2" on:click={() => animateScroll.scrollTo({element: '#usage', duration: 1000})}>Releases</button>
       <button class="mr-4 text-primary font-medium hover:underline hover:underline-offset-4 hover:decoration-secondary hover:decoration-2" on:click={() => animateScroll.scrollTo({element: '#usage', duration: 1000})}>How to use Figpeek?</button>
 
       <button class="button text-primary bg-secondary button-secondary" on:click={()=> {
