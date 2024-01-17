@@ -6,7 +6,7 @@ This template should help get you started developing with Svelte in Vite.
 
 [VSCode](https://code.visualstudio.com/) + [Svelte](https://marketplace.visualstudio.com/items?itemName=svelte.svelte-vscode).
 ```bash
-Note: This project doesn't work with Yarn and PNPM package managers for some reason at the moment (use NPM).
+Note: This project will not work with Yarn and PNPM package managers (use NPM instead).
 ```
 
 ## Need an official Svelte framework?
