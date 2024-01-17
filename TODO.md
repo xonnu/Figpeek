@@ -7,13 +7,14 @@ So in terms of security live it prone to any kinds of web attacks.
 
 ## Previously Changes (2 years ago abandoned)
 
-- [X] Add a delay in save button @done
-- [] Fix bug in color input @done
-- [] Make figpeek PWA @done
-- [] Add usage @done
+- [X] Add a delay in save button 
+- [X] Fix bug in color input 
+- [X] Make figpeek PWA 
+- [X] Add usage 
 
 ## High Priority (needs to be done)
 
+- [] Add Releases Page (during load)
 - [] Add loading animation after providing details (See #9)
 - [] Add random emoji generating
 - [] Provide more layouts if user wants to provide image as hero mode.
