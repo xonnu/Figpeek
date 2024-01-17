@@ -8,7 +8,7 @@ Me, as myself I want to keep his one of the hobbyist projects to revive and to m
 
 In terms of security we just wanted to live it prone to any kinds we only use NPM during initialization so when you use to run with YARN and PNPM is kind of broken to run this project.
 
-We released this project under General Public License (GPL v2) under Free Software Foundation
+We released this project under General Public License (GPL v3) under Free Software Foundation
 Feel free to do anything you want here in this project we must committed to 4 essentials of user's freedom.
 
 See the 4 essentials of user's freedom [here.](https://www.gnu.org/philosophy/philosophy.en.html) 
