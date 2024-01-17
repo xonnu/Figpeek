@@ -211,11 +211,11 @@
 <!-- footer -->
 <footer class="flex items-center justify-center container mx-auto px-4 py-5 pb-10 pt-14">
   <div class="flex flex-col gap-2 w-full items-center justify-center">
-    <p class="text-sm text-primary/60 font-medium">Created by <b class="text-primary"><a href="https://heychrono.me" target="_blank" rel="noopenner noreferrer">Justin Pascual 🧪</a></b> Licensed under the MIT License. <b class="text-primary"><a href="https://forms.office.com/r/1MZ3ZS9XnE" target="_blank" rel="noopener noreferrer">Send feedback 👋</a></b></p>
+    <p class="text-sm text-primary/60 font-medium">Created by <b class="text-primary"><a href="https://heychrono.me" target="_blank" rel="noopenner noreferrer">Justin Pascual 🧪</a></b> Licensed under the GPL v3 License. <b class="text-primary"><a href="https://forms.office.com/r/1MZ3ZS9XnE" target="_blank" rel="noopener noreferrer">Send feedback 👋</a></b></p>
     <p class="text-xs text-primary/50">Hey there, did you like it? follow me for more design stuffs.</p>
     <div class="flex flex-row gap-3 items-center">
-      <a href="https://twitter.com/heeeychrono" target="_blank" rel="noopener noreferrer"><img src="assets/icons/icons8-twitter-24.png" class="w-6 h-6 transition opacity-40 hover:opacity-100" alt="Twitter logo icon"></a>
-      <a href="https://github.com/heychrono" target="_blank" rel="noopener noreferrer"><img src="assets/icons/icons8-github-24.png" class="w-6 h-6 transition opacity-40 hover:opacity-100" alt="GitHub logo icon"></a>
+      <a href="https://twitter.com/xuronno" target="_blank" rel="noopener noreferrer"><img src="assets/icons/icons8-twitter-24.png" class="w-6 h-6 transition opacity-40 hover:opacity-100" alt="Twitter logo icon"></a>
+      <a href="https://github.com/xuronno" target="_blank" rel="noopener noreferrer"><img src="assets/icons/icons8-github-24.png" class="w-6 h-6 transition opacity-40 hover:opacity-100" alt="GitHub logo icon"></a>
     </div>
   </div>
 </footer>
