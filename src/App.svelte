@@ -58,13 +58,15 @@
 </div>
 
 <!-- navigation bar -->
-<nav class="hidden lg:flex w-full h-[80px] bg-white backdrop-filter backdrop-blur-lg bg-opacity-70 px-4 fixed top-0 left-0 z-40">
+<nav id="topbar" class="hidden lg:flex w-full h-[80px] bg-white backdrop-filter backdrop-blur-lg bg-opacity-70 px-4 fixed top-0 left-0 z-40">
   <div class="flex items-center justify-between container mx-auto w-full h-full transition-all">
-    <img src={logo} class="" alt="Figpeek logo">
+    <div class="cursor-pointer" on:click={() => animateScroll.scrollTo({element: '#topbar', duration: 1000})}>
+      <img src={logo} class="" alt="Figpeek logo">
+    </div>
 
     <div class="flex flex-row gap-4 items-center">
-      <button class="mr-4 text-primary font-medium hover:underline hover:underline-offset-4 hover:decoration-secondary hover:decoration-2" on:click={() => animateScroll.scrollTo({element: '#usage', duration: 1000})}>Releases</button>
-      <button class="mr-4 text-primary font-medium hover:underline hover:underline-offset-4 hover:decoration-secondary hover:decoration-2" on:click={() => animateScroll.scrollTo({element: '#usage', duration: 1000})}>How to use Figpeek?</button>
+      <button class="mr-2 text-primary font-medium hover:underline hover:underline-offset-4 hover:decoration-secondary hover:decoration-2" on:click={() => animateScroll.scrollTo({element: '#product', duration: 1000})}>Product</button>
+      <button class="mr-2 text-primary font-medium hover:underline hover:underline-offset-4 hover:decoration-secondary hover:decoration-2" on:click={() => animateScroll.scrollTo({element: '#usage', duration: 1000})}>How to use Figpeek?</button>
 
       <button class="button text-primary bg-secondary button-secondary" on:click={()=> {
         is_editing = !is_editing;
@@ -163,13 +165,13 @@
 </div>
 
 <!-- about -->
-<div id="usage"class="container mx-auto bg-white w-full h-auto py-20 flex items-center justify-center flex-col rounded-2xl">
+<div id="product" class="container mx-auto bg-white w-full h-auto py-20 flex items-center justify-center flex-col rounded-2xl">
   <img src={logo} class="mb-7 w-[200px] h-auto" alt="Figpeek logo">
   <p class="text-primary/60 text-xl tracking-wide max-w-[900px] block text-center leading-[35px]">Figpeek is a new Figma and GitHub thumbnail generator. With Figpeek you can create and experiment your thumbnail with ease. Organize your Figma projects with Figpeek now, it's FREE!</p>
 </div>
 
 <!-- usage -->
-<div class="w-full py-5 px-4 bg-secondary rounded-md flex flex-col items-center justify-center">
+<div id="usage" class="w-full py-5 px-4 bg-secondary rounded-md flex flex-col items-center justify-center">
     <div class="bg-secondary rounded-md py-10 container mx-auto">
       <h2 class="py-2 text-primary font-bold text-2xl block w-full text-center">How to use Figpeek?</h2>
       
