@@ -20,7 +20,7 @@
     "surge": "^0.23.1",
     "svelte": "^3.44.0",
     "tailwindcss": "^3.0.23",
-    "vite": "^2.8.0"
+    "vite": "^2.9.17"
   },
   "dependencies": {
     "@joeattardi/emoji-button": "^4.6.2",
