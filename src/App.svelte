@@ -71,7 +71,7 @@
       <button class="button text-primary bg-secondary button-secondary" on:click={()=> {
         is_editing = !is_editing;
         if(is_editing) animateScroll.scrollTo({element: '#edit', duration: 1000})
-        }}>{ !is_editing ? 'Edit ' : 'Close'}</button>
+        }}>{ !is_editing ? 'Edit' : 'Close'}</button>
       <a id="save" href={href_image} download={download_filename} class="bg-primary text-white button button-primary" on:mouseenter={liveCapture} on:click={liveCapture}>Save Image</a>
     </div>
   </div>
@@ -80,7 +80,7 @@
 <div class="mt-[80px]"></div>
 
 {#if is_editing}
-  <div transition:slide class="p-4 py-7 hidden lg:flex flex-col px-4 bg-secondary w-full h-auto"  id="edit">
+  <div transition:slide class="p-4 py-7 hidden lg:flex flex-col px-4 bg-secondary w-full h-auto" id="edit">
     <div class="container mx-auto xl:px-24">
       <h2 class="py-2 text-primary font-bold text-2xl">Customize Thumbnail</h2>
     </div>
